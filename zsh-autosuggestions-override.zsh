@@ -15,7 +15,7 @@ _zsh_autosuggest_execute() {
 
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
-            exa --group-directories-first
+            ls --color=auto --group-directories-first
             unset MYVAR
         else
             git -c color.status=always status -sb 2> /dev/null
