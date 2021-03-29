@@ -3,6 +3,7 @@
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
         clear
+        gitstatus_prompt_update
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
             zle reset-prompt
