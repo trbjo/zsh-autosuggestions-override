@@ -1,17 +1,15 @@
-
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
-        clear
         gitstatus_prompt_update
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
-            zle reset-prompt
+            zle clear-screen
             printf "\r"
             git status --porcelain --short 2> /dev/null
             unset MYVAR
         else
-            zle reset-prompt
+            zle clear-screen
             printf "\r"
             ls --color=auto --group-directories-first
             MYVAR=1
