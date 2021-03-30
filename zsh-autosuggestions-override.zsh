@@ -14,7 +14,7 @@ _zsh_autosuggest_execute() {
             ls --color=auto --group-directories-first
             MYVAR=1
         fi
-        printf "\x1B[38;5;12m\033[1mλ\033[0m "
+        printf "\x1B[5m\033[1mλ\033[0m "
         return 0
     fi
 
