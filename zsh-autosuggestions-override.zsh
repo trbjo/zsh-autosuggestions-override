@@ -13,6 +13,7 @@ _zsh_autosuggest_execute() {
             printf "\r"
             ls --color=auto --group-directories-first
             MYVAR=1
+            Addnewline=1
         fi
         printf "\x1B[35m\033[1mλ\033[0m "
         return 0
