@@ -1,7 +1,7 @@
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
-        gitstatus_prompt_update
+        redraw-prompt
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
             zle clear-screen
