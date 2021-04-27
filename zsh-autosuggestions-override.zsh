@@ -5,7 +5,6 @@ _zsh_autosuggest_execute() {
         then
             print -Pn -- '\x1B[F\x1B[2K'
             ls --color=auto --group-directories-first
-            print
             unset MYVAR
         else
             clear
