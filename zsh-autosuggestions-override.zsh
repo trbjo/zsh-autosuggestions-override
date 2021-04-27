@@ -1,21 +1,17 @@
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
-        redraw-prompt
-        if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
+        if [ "${LASTWIDGET}" == "autosuggest-execute" ] || [ "${LASTWIDGET}" == "goto_sublime_current_dir" ] && [ ${MYVAR} ]
         then
-            zle clear-screen
-            printf "\r"
-            git status --porcelain --short 2> /dev/null
+            clear
             unset MYVAR
         else
-            zle clear-screen
-            printf "\r"
+            print -Pn -- '\x1B[F\x1B[2K'
             ls --color=auto --group-directories-first
+            print
             MYVAR=1
-            Addnewline=1
         fi
-        printf "\x1B[35m\033[1mλ\033[0m "
+        zle redraw-prompt
         return 0
     fi
 
