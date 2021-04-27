@@ -3,12 +3,12 @@ _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] || [ "${LASTWIDGET}" == "goto_sublime_current_dir" ] && [ ${MYVAR} ]
         then
-            clear
-            unset MYVAR
-        else
             print -Pn -- '\x1B[F\x1B[2K'
             ls --color=auto --group-directories-first
             print
+            unset MYVAR
+        else
+            clear
             MYVAR=1
         fi
         zle redraw-prompt
