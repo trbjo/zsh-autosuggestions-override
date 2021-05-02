@@ -1,13 +1,7 @@
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
-
-        if [[ -n ${VCS_STATUS_WORKDIR} ]]; then
-            git=$(pgrep -f "/usr/bin/git -c gc.auto=0 -C ${VCS_STATUS_WORKDIR} fetch --quiet --no-tags --recurse-submodules=no")
-            pid=($(pgrep -f "tail --pid=$git -f /dev/null"))
-            [[ -n $pid ]] && kill $(ps -o ppid= $pid) $pid && unset pid git
-        fi
-
+        xterm_title_preexec
         print -nP '\x1b[?25l' # hide cursor
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] || [ "${LASTWIDGET}" == "goto_sublime_current_dir" ] && [ ${MYVAR} ]
         then
