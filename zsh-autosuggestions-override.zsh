@@ -16,7 +16,7 @@ _zsh_autosuggest_execute() {
         zle reset-prompt
     else
         # Add the suggestion to the buffer
-        BUFFER="$BUFFER$POSTDISPLAY"
+        BUFFER+="${POSTDISPLAY% }"
 
         # Remove the suggestion
         unset POSTDISPLAY
