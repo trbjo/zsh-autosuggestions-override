@@ -2,7 +2,7 @@
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
         xterm_title_preexec
-        print -n '\x1b[?25l\033[J\033[1J\033[H' # hide cursor
+        print -n '\x1b[?25l\033[J\033[1J\033[H' # hide cursor and clear screen
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
             ls --color=auto --group-directories-first
