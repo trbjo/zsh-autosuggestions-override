@@ -16,10 +16,10 @@ _zsh_autosuggest_execute() {
         zle reset-prompt
     else
         # Add the suggestion to the buffer
-        BUFFER+="${POSTDISPLAY%%[[:blank:]]#}"
+        BUFFER+="${POSTDISPLAY}"
 
         # Remove the suggestion
-        unset POSTDISPLAY
+        [[ $POSTDISPLAY ]] && unset POSTDISPLAY || BUFFER="${BUFFER%%[[:blank:]]#}"
 
         # Call the original `accept-line` to handle syntax highlighting or
         # other potential custom behavior
