@@ -3,12 +3,13 @@ _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
         xterm_title_preexec
         print -nP '\x1b[?25l' # hide cursor
-        clear
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
+            print -n '\x1B[2K\x1B[F\x1B[2K'
             ls --color=auto --group-directories-first
             unset MYVAR
         else
+            clear
             MYVAR=1
         fi
         preprompt
