@@ -1,7 +1,7 @@
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
     if [ -z $BUFFER ]; then
-        xterm_title_preexec
+        control_git_sideeffects_preexec
         print -n '\x1b[?25l\033[2J\033[3J\033[H' # hide cursor and clear screen
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
