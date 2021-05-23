@@ -1,6 +1,16 @@
 # Accept the entire suggestion and execute it
 _zsh_autosuggest_execute() {
-    if [ -z $BUFFER ]; then
+    if [[ $BUFFER ]]; then
+        # Add the suggestion to the buffer
+        BUFFER+="${POSTDISPLAY}"
+
+        # Remove the suggestion
+        [[ $POSTDISPLAY ]] && unset POSTDISPLAY || BUFFER="${BUFFER%%[[:blank:]]#}"
+
+        # Call the original `accept-line` to handle syntax highlighting or
+        # other potential custom behavior
+        _zsh_autosuggest_invoke_original_widget "accept-line"
+    else
         control_git_sideeffects_preexec
         print -n '\x1b[?25l\033[2J\033[3J\033[H' # hide cursor and clear screen
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
@@ -12,16 +22,6 @@ _zsh_autosuggest_execute() {
         fi
         preprompt
         zle reset-prompt
-    else
-        # Add the suggestion to the buffer
-        BUFFER+="${POSTDISPLAY}"
-
-        # Remove the suggestion
-        [[ $POSTDISPLAY ]] && unset POSTDISPLAY || BUFFER="${BUFFER%%[[:blank:]]#}"
-
-        # Call the original `accept-line` to handle syntax highlighting or
-        # other potential custom behavior
-        _zsh_autosuggest_invoke_original_widget "accept-line"
     fi
 }
 
