@@ -12,7 +12,7 @@ _zsh_autosuggest_execute() {
         _zsh_autosuggest_invoke_original_widget "accept-line"
     else
         control_git_sideeffects_preexec
-        print -n '\x1b[?25l\033[2J\033[3J\033[H' # hide cursor and clear screen
+        print -n '\033[2J\033[3J\033[H' # hide cursor and clear screen
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
             ls --color=auto --group-directories-first
@@ -20,6 +20,7 @@ _zsh_autosuggest_execute() {
         else
             MYVAR=1
         fi
+        print
         preprompt
         zle reset-prompt
     fi
