@@ -16,11 +16,11 @@ _zsh_autosuggest_execute() {
         if [ "${LASTWIDGET}" == "autosuggest-execute" ] && [ ${MYVAR} ]
         then
             ls --color=auto --group-directories-first
+            print
             unset MYVAR
         else
             MYVAR=1
         fi
-        print
         preprompt
         zle reset-prompt
     fi
