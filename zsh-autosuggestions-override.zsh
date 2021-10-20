@@ -19,8 +19,12 @@ _zsh_autosuggest_execute() {
     else
         control_git_sideeffects_preexec
         print -n '\033[2J\033[3J\033[H' # hide cursor and clear screen
-        $_file_lister --color=auto --group-directories-first
-        print
+        if [[ "${LASTWIDGET}" == "reset-prompt" ]]; then
+            $_file_lister --color=auto --group-directories-first
+            print
+        else
+            MYVAR=1
+        fi
         preprompt
         zle reset-prompt
     fi
