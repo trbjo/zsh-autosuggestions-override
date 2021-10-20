@@ -26,5 +26,4 @@ _zsh_autosuggest_execute() {
     fi
 }
 
-export KEYTIMEOUT=1
 bindkey -e '\e' autosuggest-execute
