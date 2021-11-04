@@ -19,7 +19,7 @@ _zsh_autosuggest_execute() {
     else
         control_git_sideeffects_preexec
         print -n '\033[2J\033[3J\033[H' # hide cursor and clear screen
-        if [[ "${LASTWIDGET}" == "reset-prompt" ]]; then
+        if [[ "${LASTWIDGET}" == "reset-prompt" ]] && [[ -z $SSH_CONNECTION ]]; then
             $_file_lister --color=auto --group-directories-first
             print
         else
